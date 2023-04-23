@@ -1,9 +1,31 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { GetStaticProps } from 'next'
+import { ArrayUtils } from '@/commons/utils'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const arrayNumber = [2, 45, 4, 76, 12, 2, 5]
+const arrayString = ['gdfgd', 'tertete', 'aafsdas']
+
+const objString = [
+    { number: 4, string: 'gfdgdfgdf' },
+    { number: 3, string: 'afasdff' },
+    { number: 78, string: 'opipip' },
+    { number: 2, string: 'zvczxzv' },
+]
+
 export default function Home() {
+    const { t } = useTranslation('home')
+
+    const test = ArrayUtils.sort(objString, {
+        order: 'desc',
+        attribute: 'string',
+    })
+    console.log('test', test)
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -13,6 +35,7 @@ export default function Home() {
                         src/pages/index.tsx
                     </code>
                 </p>
+                <p>Test translation: {t('title')}</p>
                 <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
                     <a
                         className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
@@ -135,4 +158,21 @@ export default function Home() {
             </div>
         </main>
     )
+}
+
+type CustomGetStaticProps = GetStaticProps & {
+    locale: string
+}
+
+export async function getStaticProps({ locale }: CustomGetStaticProps) {
+    const appLocale = await serverSideTranslations(locale ?? 'en', [
+        'common',
+        'home',
+    ])
+
+    return {
+        props: {
+            ...appLocale,
+        },
+    }
 }
