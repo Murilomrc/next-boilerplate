@@ -41,6 +41,8 @@ api.interceptors.response.use(
     }
 )
 
+// api('url').get().params({}).body().config().headers()
+
 export const apiRequest = async <T>(
     config: AxiosRequestConfig,
     isThrow: boolean = false

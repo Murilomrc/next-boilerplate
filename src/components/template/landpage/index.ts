@@ -1,0 +1,8 @@
+export { default as TemplateContainer } from './TemplateContainer'
+export { default as Header } from './Header'
+export { default as Footer } from './Footer'
+export { default as Container } from './Container'
+export { default as Content } from './Content'
+export { default as Aside } from './Aside'
+export { default as Section } from './Section'
+export { default as Title } from './Title'

@@ -7,24 +7,8 @@ import { ArrayUtils } from '@/commons/utils'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const arrayNumber = [2, 45, 4, 76, 12, 2, 5]
-const arrayString = ['gdfgd', 'tertete', 'aafsdas']
-
-const objString = [
-    { number: 4, string: 'gfdgdfgdf' },
-    { number: 3, string: 'afasdff' },
-    { number: 78, string: 'opipip' },
-    { number: 2, string: 'zvczxzv' },
-]
-
 export default function Home() {
     const { t } = useTranslation('home')
-
-    const test = ArrayUtils.sort(objString, {
-        order: 'desc',
-        attribute: 'string',
-    })
-    console.log('test', test)
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">

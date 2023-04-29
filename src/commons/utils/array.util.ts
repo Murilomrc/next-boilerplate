@@ -1,3 +1,5 @@
+import { TypeCheckUtils } from './typeCheck.util'
+
 type SortTypes = 'alphabetic' | 'numeric'
 type OrderTypes = 'asc' | 'desc'
 interface ArraySortConfig {
@@ -15,10 +17,49 @@ export const contains = (
         attribute ? item[attribute] === value : item === value
     )
 
+export const containsRecursively = (
+    array: any[],
+    value: any,
+    attribute?: string | undefined
+): boolean =>
+    array
+        .flat(100)
+        .some((item: any) =>
+            attribute ? item[attribute] === value : item === value
+        )
+/* array.some((item: any) => {
+        if (TypeCheckUtils.isArray(value)) {
+            return containsRecursive(item, value, attribute)
+        }
+        return attribute ? item[attribute] === value : item === value
+    }) */
+
+export const containsAllIn = (
+    arrayTarget: any[],
+    arrayCompare: any[],
+    attribute?: string | undefined
+): boolean => arrayTarget.every((item: any) => arrayCompare.includes(item))
+
 export const functionalDistinct = (value: any, index: number, self: any[]) =>
     self.indexOf(value) === index
 
-export const distinct = (
+export const distinct = (array: any[], attribute?: string | string[]): any[] =>
+    array.filter(
+        (item: any, i: number, self: any[]) =>
+            self.findIndex((selfItem: any) => {
+                if (typeof attribute === 'string')
+                    return selfItem[attribute] === item[attribute]
+                if (Array.isArray(attribute))
+                    return (
+                        attribute.filter(
+                            (attr) => selfItem[attr] === item[attr]
+                        ).length === attribute.length
+                    )
+                return item === selfItem
+            }) === i
+    )
+
+export const distinctByValue = (
     array: any[],
     value: any,
     attribute?: string | undefined
@@ -73,10 +114,18 @@ export const sort = <T = any>(array: T[], sortConfig: ArraySortConfig): T[] => {
     return isAsc ? sortedArray : sortedArray.reverse()
 }
 
+const removeByIndex = (array: any[], index: number) => {
+    if (array?.[index]) array.splice(index, 1)
+}
+
 export const ArrayUtils = {
-    contains,
     distinct,
+    contains,
+    containsAllIn,
+    containsRecursively,
+    distinctByValue,
     equals,
     keepOnlyLast,
     sort,
+    removeByIndex,
 }

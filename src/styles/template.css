@@ -1,0 +1,14 @@
+.body {
+}
+
+.body > header {
+    background-color: #e5e7eb;
+}
+.body > div {
+}
+.body > div > aside {
+    width: 200px;
+}
+.body > footer {
+    background-color: #e5e7eb;
+}
