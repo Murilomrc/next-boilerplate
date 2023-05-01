@@ -16,6 +16,7 @@ const Title: FC<TitleProps> = (props) => {
     const title = text || children
     const TitleElement = as
     const elementProps = props as HTMLAttributes<HTMLDivElement>
+    const test = ''
 
     return (
         <TitleElement {...elementProps} className={className}>
