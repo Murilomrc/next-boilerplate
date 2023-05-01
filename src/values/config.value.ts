@@ -12,7 +12,7 @@ export const appValues = {
 }
 
 export const apiValues = {
-    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
+    baseUrl: 'https://httpbin.org',
     timeout: process.env.NEXT_PUBLIC_API_TIMEOUT || 10000,
 }
 

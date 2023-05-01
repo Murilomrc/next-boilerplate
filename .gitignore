@@ -1,8 +1,7 @@
 .next
-.next/
-./.next
 next-env.d.ts
 node_modules
+.env.development
 .env.production
 yarn.lock
 package-lock.json
