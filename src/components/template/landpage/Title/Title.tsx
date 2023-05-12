@@ -1,7 +1,8 @@
-import { typography } from '@/values/design-system/tokens.value'
 import { FC, ReactNode, HTMLAttributes } from 'react'
 
-type TitleAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+import { HeadingValues, typography } from '@/values/design-system/tokens'
+
+type TitleAs = HeadingValues
 
 export type TitleProps = HTMLAttributes<HTMLDivElement> & {
     children?: ReactNode

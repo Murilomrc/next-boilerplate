@@ -1,5 +1,3 @@
-import { TypeCheckUtils } from './typeCheck.util'
-
 type SortTypes = 'alphabetic' | 'numeric'
 type OrderTypes = 'asc' | 'desc'
 interface ArraySortConfig {
@@ -27,12 +25,6 @@ export const containsRecursively = (
         .some((item: any) =>
             attribute ? item[attribute] === value : item === value
         )
-/* array.some((item: any) => {
-        if (TypeCheckUtils.isArray(value)) {
-            return containsRecursive(item, value, attribute)
-        }
-        return attribute ? item[attribute] === value : item === value
-    }) */
 
 export const containsAllIn = (
     arrayTarget: any[],
@@ -114,9 +106,26 @@ export const sort = <T = any>(array: T[], sortConfig: ArraySortConfig): T[] => {
     return isAsc ? sortedArray : sortedArray.reverse()
 }
 
-const removeByIndex = (array: any[], index: number) => {
+export const removeByIndex = (array: any[], index: number) => {
     if (array?.[index]) array.splice(index, 1)
 }
+
+export const keepOnlyLastOccurrence = (array: any[], attribute: string) =>
+    array.filter(
+        (item: any, index, selfArray: any[]) =>
+            selfArray.findLastIndex(
+                (selfItem: any) => selfItem[attribute] === item[attribute]
+            ) === index
+    )
+
+export const deepCopy = <T = any>(array: T[]): T[] =>
+    JSON.parse(JSON.stringify(array))
+
+export const buildNumberArray = (size: number): number[] =>
+    Array.from(Array(size).keys())
+
+export const hasAllSameValue = <T = any>(array: T[], attribute: keyof T) =>
+    array.every((item) => item[attribute] === array[0][attribute])
 
 export const ArrayUtils = {
     distinct,
@@ -128,4 +137,8 @@ export const ArrayUtils = {
     keepOnlyLast,
     sort,
     removeByIndex,
+    keepOnlyLastOccurrence,
+    deepCopy,
+    buildNumberArray,
+    hasAllSameValue,
 }

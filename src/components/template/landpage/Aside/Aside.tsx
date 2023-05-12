@@ -1,4 +1,4 @@
-import { FC, ReactNode, HTMLAttributes } from 'react'
+import { FC, HTMLAttributes, ReactNode } from 'react'
 
 type AsideSide = 'left' | 'right'
 
@@ -19,6 +19,10 @@ const Aside: FC<AsideProps> = (props) => {
             {children}
         </aside>
     )
+}
+
+Aside.defaultProps = {
+    align: 'left',
 }
 
 export default Aside

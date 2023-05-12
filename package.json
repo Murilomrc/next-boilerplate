@@ -15,7 +15,8 @@
         "export": "next build && next export",
         "start:static": "npx http-server ./out -c-1",
         "prepare": "husky install",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "gitignore:update": "git rm -r --cached ."
     },
     "dependencies": {
         "@types/node": "18.15.11",

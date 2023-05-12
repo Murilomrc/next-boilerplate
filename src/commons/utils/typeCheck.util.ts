@@ -1,4 +1,5 @@
 import { Primitive } from '@/types'
+import { ObjectType } from 'typescript'
 
 export const isString = (value: unknown): value is string =>
     typeof value === 'string'
@@ -15,10 +16,16 @@ export const isPrimitive = (value: unknown): value is Primitive =>
 export const isArray = (value: unknown): value is [] =>
     typeof value === 'object' && Array.isArray(value)
 
+export const isKeyExists = (
+    key: string,
+    object: ObjectType
+): key is keyof ObjectType => key in object
+
 export const TypeCheckUtils = {
     isString,
     isNumber,
     isBoolean,
     isPrimitive,
     isArray,
+    isKeyExists,
 }
