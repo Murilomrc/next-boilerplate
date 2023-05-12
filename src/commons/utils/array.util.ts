@@ -127,6 +127,9 @@ export const buildNumberArray = (size: number): number[] =>
 export const hasAllSameValue = <T = any>(array: T[], attribute: keyof T) =>
     array.every((item) => item[attribute] === array[0][attribute])
 
+export const arrayDiff = (array1: any[], array2: any[]): any[] =>
+    array1.filter((item) => array2.indexOf(item) < 0)
+
 export const ArrayUtils = {
     distinct,
     contains,
@@ -141,4 +144,5 @@ export const ArrayUtils = {
     deepCopy,
     buildNumberArray,
     hasAllSameValue,
+    diff: arrayDiff,
 }

@@ -4,6 +4,12 @@ const validateEmailRegex =
 export const validateEmail = (email: string | undefined | null) =>
     email ? String(email).toLowerCase().match(validateEmailRegex) : false
 
+export const validateVersionFormat = (version: string) =>
+    /^(?:\d+\.){2}\d+$/.test(version)
+
+export const checkProtocol = (url: string) => /^https?:/.test(url)
+
 export const ValidationUtils = {
     isEmail: validateEmail,
+    isVersionFormat: validateVersionFormat,
 }

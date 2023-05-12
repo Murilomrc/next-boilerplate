@@ -1,10 +1,10 @@
 import {
-    TemplateContainer,
-    Header,
-    Footer,
     Container,
     Content,
+    Footer,
+    Header,
     Section,
+    TemplateContainer,
 } from '@/components/template/landpage'
 
 export default function Landpage() {

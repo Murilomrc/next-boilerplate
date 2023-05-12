@@ -37,10 +37,40 @@ export const uncapitalize = (
 
 export const isNumber = (value: string) => !isNaN(+value)
 
+export const slugify = (value: string) =>
+    value
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/[\s_-]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+
+export const camelize = (value: string) =>
+    value
+        .replace(/[çÇ]+/g, 'c')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/(?:^\w|[A-Z]|\b\w)/g, (word: string, index: number) =>
+            index === 0 ? word.toLowerCase() : word.toUpperCase()
+        )
+        .replace(/\s+/g, '')
+        .replace(/-/g, '')
+
+export const charCount = (text: string, char: string) =>
+    text.split(char).length - 1
+
+export const replaceAll = (text: string, textReplace: string) =>
+    text.replace(/\s/g, textReplace)
+
 export const StringUtils = {
     toOnlyNumbers,
     toZerofill,
+    isNumber,
     capitalize,
     uncapitalize,
-    isNumber,
+    camelize,
+    slugify,
+    charCount,
+    replaceAll,
 }
