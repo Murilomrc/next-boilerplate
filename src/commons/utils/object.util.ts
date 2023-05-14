@@ -1,7 +1,7 @@
-export const isEmpty = (object: any) =>
+export const isObjectEmpty = (object: any) =>
     Reflect.ownKeys(object).length === 0 && object.contructor === Object
 
-export const deepCopy = (obj: any) => JSON.parse(JSON.stringify(obj))
+export const objectDeepCopy = (obj: any) => JSON.parse(JSON.stringify(obj))
 
 /* export const pick = <T = any>(obj: T, props: Array<string>): Object => {
     return Object.keys(obj)
@@ -13,6 +13,6 @@ export const deepCopy = (obj: any) => JSON.parse(JSON.stringify(obj))
 } */
 
 export const ObjectUtils = {
-    isEmpty,
-    deepCopy,
+    isEmpty: isObjectEmpty,
+    deepCopy: objectDeepCopy,
 }
