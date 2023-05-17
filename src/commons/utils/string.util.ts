@@ -60,8 +60,15 @@ export const camelize = (value: string) =>
 export const charCount = (text: string, char: string) =>
     text.split(char).length - 1
 
-export const replaceAll = (text: string, textReplace: string) =>
-    text.replace(/\s/g, textReplace)
+export const replaceAll = (
+    text: string,
+    searchValue: string,
+    replacer: string
+) =>
+    text.replace(
+        new RegExp(searchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
+        replacer
+    )
 
 export const StringUtils = {
     toOnlyNumbers,

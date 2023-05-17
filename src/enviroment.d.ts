@@ -9,6 +9,7 @@ declare global {
             NEXT_PUBLIC_LS_KEY: string
             NEXT_PUBLIC_API_BASE_URL: string
             NEXT_PUBLIC_API_TIMEOUT: number
+            NEXT_PUBLIC_STORE_TYPE: AppStoreType
         }
     }
 }

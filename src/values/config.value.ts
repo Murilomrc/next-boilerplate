@@ -1,3 +1,5 @@
+import { ONE_YEAR } from './constant.value'
+
 export const commonValues = {
     lang: process.env.NEXT_PUBLIC_LANG || 'pt-BR',
 }
@@ -8,7 +10,19 @@ export const appValues = {
     env: process.env.NEXT_PUBLIC_ENV || 'development',
     isDevelopment: process.env.NEXT_PUBLIC_ENV === 'development',
     localStorageKey: process.env.NEXT_PUBLIC_LS_KEY,
-    tokenLocal: process.env.NEXT_PUBLIC_TOKEN_LOCAL,
+    token: {
+        local: process.env.NEXT_PUBLIC_TOKEN_LOCAL,
+        accessKey: 'teste',
+    },
+    store: {
+        type: process.env.NEXT_PUBLIC_STORE_TYPE || 'cookie',
+    },
+    cookie: {
+        config: {
+            maxAge: ONE_YEAR,
+            path: '/',
+        },
+    },
 }
 
 export const apiValues = {

@@ -1,6 +1,5 @@
-import { AxiosRequestConfig } from 'axios'
-
 import { apiValues } from '@/values/config.value'
+import { AxiosRequestConfig } from 'axios'
 
 export const axiosConfig: AxiosRequestConfig<any> = {
     baseURL: apiValues.baseUrl,
