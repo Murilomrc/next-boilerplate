@@ -1,4 +1,5 @@
-import { FC, ReactNode, HTMLAttributes } from 'react'
+import type { FC, HTMLAttributes, ReactNode } from 'react'
+
 import SectionTitle from './Title'
 
 type SectionAs = 'section' | 'div' | 'main'
@@ -25,5 +26,9 @@ const Section: FC<SectionProps> & SectionCompoundProps = (props) => {
     )
 }
 Section.Title = SectionTitle
+
+Section.defaultProps = {
+    as: 'section',
+}
 
 export default Section

@@ -13,6 +13,8 @@ export const cleanRegex = {
     cpf: /\.|\-/g,
     cnpj: /\.|\-|\//g,
     keepOnlyDigits: /\D/g,
+    cedillaToC: /[çÇ]+/g,
+    removeAccents: /[\u0300-\u036f]/g,
 }
 
 export const maskRegex = {

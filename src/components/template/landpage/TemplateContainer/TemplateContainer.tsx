@@ -1,11 +1,11 @@
-import { FC, ReactNode, HTMLAttributes } from 'react'
+import type { FC, HTMLAttributes, ReactNode } from 'react'
 
 export type TemplateContainerProps = HTMLAttributes<HTMLDivElement> & {
     children: ReactNode
 }
 
 const TemplateContainer: FC<TemplateContainerProps> = (props) => {
-    const { children, className = '' } = props
+    const { children, className } = props
 
     const elementClassName = [
         'body min-h-screen flex flex-col',
@@ -18,6 +18,10 @@ const TemplateContainer: FC<TemplateContainerProps> = (props) => {
             {children}
         </div>
     )
+}
+
+TemplateContainer.defaultProps = {
+    className: '',
 }
 
 export default TemplateContainer

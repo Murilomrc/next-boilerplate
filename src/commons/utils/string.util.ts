@@ -1,3 +1,5 @@
+import { cleanRegex } from '@/values/regex.value'
+
 export const toOnlyNumbers = (value: string) => value.replace(/\D/g, '')
 
 export const toZerofill = (times: number, value: string | number) =>
@@ -37,6 +39,15 @@ export const uncapitalize = (
 
 export const isNumber = (value: string) => !isNaN(+value)
 
+export const normalize = (value: string) =>
+    value
+        .toString()
+        .trim()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(cleanRegex.cedillaToC, 'c')
+        .replace(cleanRegex.removeAccents, '')
+
 export const slugify = (value: string) =>
     value
         .toString()
@@ -47,10 +58,7 @@ export const slugify = (value: string) =>
         .replace(/^-+|-+$/g, '')
 
 export const camelize = (value: string) =>
-    value
-        .replace(/[çÇ]+/g, 'c')
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
+    normalize(value)
         .replace(/(?:^\w|[A-Z]|\b\w)/g, (word: string, index: number) =>
             index === 0 ? word.toLowerCase() : word.toUpperCase()
         )
@@ -78,6 +86,7 @@ export const StringUtils = {
     uncapitalize,
     camelize,
     slugify,
+    normalize,
     charCount,
     replaceAll,
 }

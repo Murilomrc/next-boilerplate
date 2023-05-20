@@ -1,13 +1,14 @@
+import { TypeCheckUtils } from './typeCheck.util'
+
 export const formatNumberToCurrency = (
     value: number,
     currency: string = 'EUR',
     locale: string = 'nl-NL'
 ) => {
-    const formatter = new Intl.NumberFormat(locale, {
+    return new Intl.NumberFormat(locale, {
         style: 'currency',
         currency: currency,
-    })
-    return formatter.format(value)
+    }).format(value)
 }
 
 export const formatNumberToMoney = (money: string | number) =>
@@ -23,7 +24,13 @@ export const formatNumberToMoney = (money: string | number) =>
             ','
         )
 
+export const formatNumberToDecimal = (value: string | number) => {
+    if (TypeCheckUtils.isString(value)) value = +value.replace(/\,/g, '.')
+    return new Intl.NumberFormat('de-DE').format(value)
+}
+
 export const FormatUtils = {
     numberToCurrency: formatNumberToCurrency,
     numberToMoney: formatNumberToMoney,
+    numberToDecimal: formatNumberToDecimal,
 }

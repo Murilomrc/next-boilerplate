@@ -1,14 +1,7 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
-import SecureLS from 'secure-ls'
-
-import { appConfig, axiosConfig } from '@/configs'
-import { ApiBuilderConfig, HttpMethod } from '@/types/api'
 import { LogUtils } from '@/commons/utils/log.util'
-
-export interface IResponse<T = any> {
-    res?: AxiosResponse<T> | null
-    error?: AxiosResponse | null
-}
+import { appConfig, axiosConfig } from '@/configs'
+import { ApiBuilderConfig, HttpMethod, IResponse } from '@/types/api'
+import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 
 //const secureLS = new SecureLS()
 const api = axios.create(axiosConfig)
@@ -113,4 +106,5 @@ export const apiBuilder = function (endpoint: string = '') {
     return builders
 }
 
+export type { IResponse }
 export default api

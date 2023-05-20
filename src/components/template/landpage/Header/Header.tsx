@@ -1,4 +1,4 @@
-import { FC, ReactNode, HTMLAttributes } from 'react'
+import type { FC, HTMLAttributes, ReactNode } from 'react'
 
 export type HeaderProps = HTMLAttributes<HTMLDivElement> & {
     children: ReactNode

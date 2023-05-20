@@ -1,4 +1,9 @@
-import { AxiosRequestConfig } from 'axios'
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+
+export interface IResponse<T = any> {
+    res?: AxiosResponse<T> | null
+    error?: AxiosResponse | null
+}
 
 export type HttpMethod =
     | 'get'

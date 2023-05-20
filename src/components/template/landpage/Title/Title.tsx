@@ -1,6 +1,5 @@
-import { FC, ReactNode, HTMLAttributes } from 'react'
-
 import { HeadingValues, typography } from '@/values/design-system/tokens'
+import type { FC, HTMLAttributes, ReactNode } from 'react'
 
 type TitleAs = HeadingValues
 

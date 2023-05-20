@@ -6,5 +6,16 @@
         "source.fixAll.eslint": true,
         "source.fixAll.format": true,
         "source.organizeImports": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/dist": true,
+        "**/dist/*": true,
+        "**/build": true
+    },
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
     }
 }
